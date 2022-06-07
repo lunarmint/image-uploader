@@ -3,16 +3,14 @@ import logging
 import os
 import random
 import string
-import magic
-import pillow_heif
 
 import PIL
+import magic
 from PIL import Image
 from flask import request, Blueprint, jsonify
 from flask_api import status
 from pillow_heif import register_heif_opener
 from werkzeug.utils import secure_filename
-from PIL.ExifTags import TAGS
 
 from utils.config import config
 
@@ -74,7 +72,9 @@ def generate_filename(filename: str, extension: str = None) -> str:
         extension = filename.rsplit(".", 1)[1]
 
     if config["random_name"] > 0 or filename == "":
-        random_string = "".join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(config["random_name"]))
+        random_string = "".join(
+            random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(config["random_name"])
+        )
         return f"{random_string}.{extension}"
 
     return f"{secure_filename(filename).rsplit('.', 1)[0]}.{extension}"
