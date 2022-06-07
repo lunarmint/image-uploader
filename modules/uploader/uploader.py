@@ -29,8 +29,8 @@ def upload():
     file = request.files["file"]
 
     mime_type = get_mime_type(file)
-    # if not is_mime_allowed(mime_type):
-    #     return "Unsupported media type.", status.HTTP_415_UNSUPPORTED_MEDIA_TYPE
+    if not is_mime_allowed(mime_type):
+        return "Unsupported media type.", status.HTTP_415_UNSUPPORTED_MEDIA_TYPE
 
     img_dir = os.path.join(os.getcwd(), "img", datetime.datetime.utcnow().strftime("%Y-%m-%d"))
     if not os.path.exists(img_dir):
