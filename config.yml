@@ -1,0 +1,6 @@
+host: "127.0.0.1"
+port: "5001"
+random_name: 10
+mime_type:
+  allowed: ["audio", "video", "image"]
+  heif: ["image/heif", "image/heif-sequence", "image/heic", "image/heic-sequence", "image/avif", "image/avif-sequence"]

@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "image-uploader"
+version = "1.0.0"
+description = "A self-hosting custom image uploader."
+authors = ["Mint <developer@chocomint.dev>"]
+maintainers = ["Mint <developer@chocomint.dev>"]
+license = "Unlicense"
+readme = "README.md"
+repository = "https://github.com/lunarmint/image-uploader"
+
+[tool.poetry.dependencies]
+Flask = "2.1.2"
+Flask-API = "3.0.post1"
+Pillow = "9.1.1"
+pillow-heif = "0.2.5"
+pyaml-env = "1.1.5"
+python = "^3.10"
+python-magic = "0.4.26"
+python-magic-bin = "0.4.14"
+
+[tool.poetry.dev-dependencies]
+black = ">=22.3.0"
+flake8 = "^4.0.1"
+
+[tool.black]
+line-length = 120
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
