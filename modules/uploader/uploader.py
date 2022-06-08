@@ -8,7 +8,6 @@ import PIL
 import magic
 from PIL import Image
 from flask import request, Blueprint, jsonify
-from flask_api import status
 from pillow_heif import register_heif_opener
 from werkzeug.utils import secure_filename
 
@@ -22,13 +21,13 @@ log = logging.getLogger(__name__)
 @uploader_blueprint.route("/upload", methods=["POST"])
 def upload():
     if not request.files:
-        return "No file part.", status.HTTP_400_BAD_REQUEST
+        return "No file part.", 400
 
     file = request.files["file"]
 
     mime_type = get_mime_type(file)
     if not is_mime_allowed(mime_type):
-        return "Unsupported media type.", status.HTTP_415_UNSUPPORTED_MEDIA_TYPE
+        return "Unsupported media type.", 415
 
     img_dir = os.path.join(os.getcwd(), "img", datetime.datetime.utcnow().strftime("%Y-%m-%d"))
     if not os.path.exists(img_dir):
@@ -47,7 +46,7 @@ def upload():
 
     response = {"url": f"{request.host_url}{filename}"}
 
-    return jsonify(response), status.HTTP_200_OK
+    return jsonify(response), 200
 
 
 def get_mime_type(file) -> str:
