@@ -12,10 +12,10 @@ repository = "https://github.com/lunarmint/image-uploader"
 Flask = "2.1.2"
 Flask-API = "3.0.post1"
 Pillow = "9.1.1"
-pillow-heif = "0.2.5"
+pillow-heif = "0.3.0"
 pyaml-env = "1.1.5"
 python = "^3.10"
-python-magic = "0.4.26"
+python-magic = "0.4.27"
 python-magic-bin = "0.4.14"
 
 [tool.poetry.dev-dependencies]
