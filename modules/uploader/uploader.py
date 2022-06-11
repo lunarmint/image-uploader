@@ -25,10 +25,6 @@ def upload():
 
     file = request.files["file"]
 
-    mime_type = get_mime_type(file)
-    if not is_mime_allowed(mime_type):
-        return "Unsupported media type.", 415
-
     img_dir = os.path.join(os.getcwd(), "img", datetime.datetime.utcnow().strftime("%Y-%m-%d"))
     if not os.path.exists(img_dir):
         os.mkdir(img_dir)
@@ -36,10 +32,15 @@ def upload():
     try:
         register_heif_opener()
         image = Image.open(file)
-        filename = generate_filename(filename=file.filename, extension="webm")
+        filename = generate_filename(filename=file.filename, extension="webp")
         img_path = os.path.join(img_dir, filename)
-        image.save(img_path, format="webp", lossless=True, exif=None)
+        image_without_exif = strip_exif(image)
+        image_without_exif.save(img_path, format="webp", lossless=True)
     except PIL.UnidentifiedImageError:
+        mime_type = get_mime_type(file)
+        if not is_mime_allowed(mime_type):
+            return "Unsupported media type.", 415
+
         filename = generate_filename(file.filename)
         img_path = os.path.join(img_dir, filename)
         file.save(img_path)
