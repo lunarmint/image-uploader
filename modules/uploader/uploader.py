@@ -35,7 +35,13 @@ def upload():
         filename = generate_filename(filename=file.filename, extension="webp")
         img_path = os.path.join(img_dir, filename)
         image_without_exif = strip_exif(image)
-        image_without_exif.save(img_path, format="webp", lossless=True)
+        image_without_exif.save(
+            fp=img_path,
+            format="webp",
+            lossless=config["webp"]["lossless"],
+            quality=config["webp"]["quality"],
+            method=config["webp"]["method"],
+        )
     except PIL.UnidentifiedImageError:
         mime_type = get_mime_type(file)
         if not is_mime_allowed(mime_type):
