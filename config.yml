@@ -6,9 +6,9 @@ webp:
   # If lossy, 0 gives the smallest size and 100 the largest.
   # If lossless, this is the amount of effort put into the compression -
   # 0 is the fastest, but gives larger files compared to the slowest, but best, 100.
-  quality: 100
+  quality: 80
   # Quality/speed trade-off (0=fast, 6=slower-better).
-  method: 6
+  method: 4
 mime_type:
   allowed: ["audio", "video", "image"]
   heif: ["image/heif", "image/heif-sequence", "image/heic", "image/heic-sequence", "image/avif", "image/avif-sequence"]
