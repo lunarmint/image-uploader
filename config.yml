@@ -6,7 +6,7 @@ webp:
   # If lossy, 0 gives the smallest size and 100 the largest.
   # If lossless, this is the amount of effort put into the compression -
   # 0 is the fastest, but gives larger files compared to the slowest, but best, 100.
-  quality: 30
+  quality: 26
   # Quality/speed trade-off (0=fast, 6=slower-better).
   method: 1
 mime_type:
