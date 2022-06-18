@@ -25,7 +25,7 @@ def upload():
 
     file = request.files["file"]
 
-    img_dir = os.path.join(os.getcwd(), "img", datetime.datetime.utcnow().strftime("%Y-%m-%d"))
+    img_dir = os.path.join("img", datetime.datetime.utcnow().strftime("%Y-%m-%d"))
     if not os.path.exists(img_dir):
         os.mkdir(img_dir)
 
