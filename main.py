@@ -6,7 +6,7 @@ from utils.config import config
 app = create_app()
 
 if __name__ == "__main__":
-    img_dir = os.path.join(os.getcwd(), "img")
+    img_dir = os.path.join(os.getcwd(), "uploads")
     if not os.path.exists(img_dir):
         os.mkdir(img_dir)
 

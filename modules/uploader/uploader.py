@@ -18,25 +18,25 @@ uploader_blueprint = Blueprint("uploader_blueprint", __name__)
 log = logging.getLogger(__name__)
 
 
-@uploader_blueprint.route("/upload", methods=["POST"])
+@uploader_blueprint.route("/api/upload", methods=["POST"])
 def upload():
     if not request.files:
         return "No file part.", 400
 
     file = request.files["file"]
 
-    img_dir = os.path.join("img", datetime.datetime.utcnow().strftime("%Y-%m-%d"))
-    if not os.path.exists(img_dir):
-        os.mkdir(img_dir)
+    upload_dir = os.path.join("uploads", datetime.datetime.utcnow().strftime("%Y-%m-%d"))
+    if not os.path.exists(upload_dir):
+        os.mkdir(upload_dir)
 
     try:
         register_heif_opener()
         image = Image.open(file)
         filename = generate_filename(filename=file.filename, extension="webp")
-        img_path = os.path.join(img_dir, filename)
+        file_path = os.path.join(upload_dir, filename)
         image_without_exif = strip_exif(image)
         image_without_exif.save(
-            fp=img_path,
+            fp=file_path,
             format="webp",
             lossless=config["webp"]["lossless"],
             quality=config["webp"]["quality"],
@@ -48,10 +48,10 @@ def upload():
             return "Unsupported media type.", 415
 
         filename = generate_filename(file.filename)
-        img_path = os.path.join(img_dir, filename)
-        file.save(img_path)
+        file_path = os.path.join(upload_dir, filename)
+        file.save(file_path)
 
-    response = {"url": f"{request.host_url}{filename}"}
+    response = {"url": f"{request.host_url}/api/view/{filename}"}
 
     return jsonify(response), 200
 
