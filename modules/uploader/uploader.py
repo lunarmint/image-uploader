@@ -59,7 +59,7 @@ def get_mime_type(file) -> str:
 
 
 def is_mime_allowed(mime_type: str) -> bool:
-    return mime_type.split("/", 1)[0] in config["mime_type"]["allowed"]
+    return mime_type.split("/", 1)[0] in config["mime_type"]["whitelisted"]
 
 
 def create_directory(filename: str) -> str:

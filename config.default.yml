@@ -1,14 +1,23 @@
-host: "127.0.0.1"
-port: "5001"
+app:
+  host: "127.0.0.1"
+  port: "5001"
+
+# Length of the randomly generated name for files.
 random_name: 10
+
+# Secret key for JWT authentication.
+jwt_secret_key:
+
 webp:
   lossless: True
+
   # If lossy, 0 gives the smallest size and 100 the largest.
   # If lossless, this is the amount of effort put into the compression -
   # 0 is the fastest, but gives larger files compared to the slowest, but best, 100.
   quality: 26
+
   # Quality/speed trade-off (0=fast, 6=slower-better).
   method: 1
+
 mime_type:
-  allowed: ["audio", "video", "image"]
-  heif: ["image/heif", "image/heif-sequence", "image/heic", "image/heic-sequence", "image/avif", "image/avif-sequence"]
+  whitelisted: ["audio", "video", "image"]
