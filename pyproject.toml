@@ -10,9 +10,9 @@ repository = "https://github.com/lunarmint/image-uploader"
 
 [tool.poetry.dependencies]
 Flask = "2.1.2"
-Flask-API = "3.0.post1"
+Flask-JWT-Extended = "4.4.1"
 Pillow = "9.1.1"
-pillow-heif = "0.3.0"
+pillow-heif = "0.3.1"
 pyaml-env = "1.1.5"
 python = "^3.10"
 python-magic = "0.4.27"
