@@ -10,4 +10,4 @@ if __name__ == "__main__":
     if not os.path.exists(upload_dir):
         os.mkdir(upload_dir)
 
-    app.run(threaded=True, host=config["app"]["host"], port=config["app"]["port"], debug=True)
+    app.run(threaded=True, host=config["app"]["host"], port=config["app"]["port"])
