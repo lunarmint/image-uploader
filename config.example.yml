@@ -1,18 +1,19 @@
 # Host and port of the app to run on.
 app:
-  host: !ENV ${APP_HOST}
-  port: !ENV ${APP_PORT}
+  host: 127.0.0.1
+  port: 5000
 
 # MongoDB's authentication credentials.
 database:
-  username: !ENV ${MONGO_USERNAME}
-  password: !ENV ${MONGO_PASSWORD}
-  hostname: !ENV ${MONGO_HOSTNAME}
-  port: !ENV ${MONGO_PORT}
-  database_name: !ENV ${MONGO_DATABASE_NAME}
+  username: root
+  password: admin
+  hostname: 127.0.0.1
+  port: 27017
+  database_name: image-uploader
+  collection_name: users
 
 # Secret key for JWT authentication.
-jwt_secret_key: !ENV ${JWT_SECRET_KEY}
+jwt_secret_key: your_key_here
 
 # Length of the randomly generated name for files.
 random_name: 10

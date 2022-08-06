@@ -13,7 +13,7 @@ class Database:
         self.password = config["database"]["password"]
         self.hostname = config["database"]["hostname"]
         self.port = config["database"]["port"]
-        self.database_name = config["database"]["database_name"]
+        self.database_name = "users"
         self.collection_name = config["database"]["collection_name"]
 
         if not all([self.hostname, self.port, self.username, self.password]):
